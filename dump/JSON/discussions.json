@@ -1,0 +1,33 @@
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    properties: {
+      messages: {
+        bsonType: 'array',
+        description: 'must be an array of message objects',
+        items: {
+          bsonType: 'object',
+          required: [
+            'message',
+            'user_id',
+            'timestamp'
+          ],
+          properties: {
+            message: {
+              bsonType: 'string',
+              description: 'must be a string'
+            },
+            user_id: {
+              bsonType: 'objectId',
+              description: 'must be an ObjectId'
+            },
+            timestamp: {
+              bsonType: 'date',
+              description: 'must be a date'
+            }
+          }
+        }
+      }
+    }
+  }
+}

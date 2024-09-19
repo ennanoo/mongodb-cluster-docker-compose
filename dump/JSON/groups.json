@@ -1,0 +1,71 @@
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      'name',
+      'group_type'
+    ],
+    properties: {
+      name: {
+        bsonType: 'string',
+        description: 'must be a string and is required'
+      },
+      description: {
+        bsonType: 'string',
+        description: 'must be a string'
+      },
+      cover_photo: {
+        bsonType: 'string',
+        description: 'must be a string representing a URL'
+      },
+      group_type: {
+        bsonType: 'string',
+        description: 'must be one of the specified enum values',
+        'enum': [
+          'public',
+          'private',
+          'secret'
+        ]
+      },
+      members: {
+        bsonType: 'array',
+        description: 'must be an array of ObjectIds',
+        items: {
+          bsonType: 'objectId'
+        }
+      },
+      admins: {
+        bsonType: 'array',
+        description: 'must be an array of ObjectIds and must have at least one item',
+        items: {
+          bsonType: 'objectId'
+        },
+        minItems: 1
+      },
+      allow_posts: {
+        bsonType: 'bool',
+        description: 'must be a boolean'
+      },
+      allow_event_creation: {
+        bsonType: 'bool',
+        description: 'must be a boolean'
+      },
+      events: {
+        bsonType: 'array',
+        description: 'must be an array of ObjectIds',
+        items: {
+          bsonType: 'objectId'
+        }
+      },
+      discussion_thread: {
+        bsonType: 'objectId',
+        description: 'must be an ObjectId representing the discussion thread'
+      },
+      password: {
+        bsonType: 'string',
+        description: 'must be a string and is required for private groups',
+        minLength: 6
+      }
+    }
+  }
+}

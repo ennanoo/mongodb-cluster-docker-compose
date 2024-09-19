@@ -1,0 +1,85 @@
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      'event_id',
+      'ticket_types'
+    ],
+    properties: {
+      event_id: {
+        bsonType: 'objectId',
+        description: 'The ID of the event this ticketing is associated with.'
+      },
+      ticket_types: {
+        bsonType: 'array',
+        description: 'An array of ticket types, each containing details about the ticket.',
+        items: {
+          bsonType: 'object',
+          required: [
+            'name',
+            'amount',
+            'quantity_limited'
+          ],
+          properties: {
+            name: {
+              bsonType: 'string',
+              description: 'The name of the ticket type.'
+            },
+            amount: {
+              bsonType: 'decimal',
+              description: 'The amount of the ticket.'
+            },
+            quantity_limited: {
+              bsonType: 'int',
+              description: 'The limited quantity of tickets available.'
+            }
+          }
+        }
+      },
+      purchases: {
+        bsonType: 'array',
+        description: 'An array of ticket purchases.',
+        items: {
+          bsonType: 'object',
+          required: [
+            'ticket_type',
+            'personal_info',
+            'purchase_date'
+          ],
+          properties: {
+            ticket_type: {
+              bsonType: 'objectId',
+              description: 'The ID of the ticket type purchased.'
+            },
+            personal_info: {
+              bsonType: 'object',
+              required: [
+                'name',
+                'first_name',
+                'full_address'
+              ],
+              properties: {
+                name: {
+                  bsonType: 'string',
+                  description: 'The name of the person purchasing the ticket.'
+                },
+                first_name: {
+                  bsonType: 'string',
+                  description: 'The first name of the person purchasing the ticket.'
+                },
+                full_address: {
+                  bsonType: 'string',
+                  description: 'The full address of the person purchasing the ticket.'
+                }
+              }
+            },
+            purchase_date: {
+              bsonType: 'date',
+              description: 'The date the ticket was purchased.'
+            }
+          }
+        }
+      }
+    }
+  }
+}

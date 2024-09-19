@@ -1,0 +1,58 @@
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      'name',
+      'created_by',
+      'photos'
+    ],
+    properties: {
+      name: {
+        bsonType: 'string',
+        description: 'must be a string and is required'
+      },
+      description: {
+        bsonType: 'string',
+        description: 'must be a string'
+      },
+      created_by: {
+        bsonType: 'objectId',
+        description: 'must be an ObjectId referencing the user who created the album'
+      },
+      photos: {
+        bsonType: 'array',
+        description: 'must be an array of photo objects',
+        items: {
+          bsonType: 'object',
+          required: [
+            'url',
+            'uploaded_by',
+            'timestamp'
+          ],
+          properties: {
+            url: {
+              bsonType: 'string',
+              description: 'must be a string representing the URL of the photo and is required'
+            },
+            uploaded_by: {
+              bsonType: 'objectId',
+              description: 'must be an ObjectId referencing the user who uploaded the photo and is required'
+            },
+            timestamp: {
+              bsonType: 'date',
+              description: 'must be a date representing when the photo was uploaded and is required'
+            },
+            caption: {
+              bsonType: 'string',
+              description: 'must be a string representing the caption for the photo'
+            },
+            discussion_thread: {
+              bsonType: 'objectId',
+              description: 'must be an ObjectId referencing the discussion thread for the photo'
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      'name',
+      'start_date',
+      'end_date',
+      'location',
+      'event_type',
+      'organizers',
+      'group'
+    ],
+    properties: {
+      name: {
+        bsonType: 'string',
+        description: 'must be a string and is required'
+      },
+      description: {
+        bsonType: 'string',
+        description: 'must be a string'
+      },
+      start_date: {
+        bsonType: 'date',
+        description: 'must be a date and is required'
+      },
+      end_date: {
+        bsonType: 'date',
+        description: 'must be a date and is required'
+      },
+      location: {
+        bsonType: 'string',
+        description: 'must be a string'
+      },
+      cover_photo: {
+        bsonType: 'string',
+        description: 'must be a string representing a URL'
+      },
+      event_type: {
+        bsonType: 'string',
+        description: 'must be one of the specified enum values',
+        'enum': [
+          'public',
+          'private'
+        ]
+      },
+      organizers: {
+        bsonType: 'array',
+        description: 'must be an array of ObjectIds',
+        minItems: 1,
+        items: {
+          bsonType: 'objectId'
+        }
+      },
+      participants: {
+        bsonType: 'array',
+        description: 'must be an array of ObjectIds',
+        items: {
+          bsonType: 'objectId'
+        }
+      },
+      group: {
+        bsonType: 'objectId',
+        description: 'must be an ObjectId'
+      },
+      photo_albums: {
+        bsonType: 'array',
+        description: 'must be an array of ObjectIds',
+        items: {
+          bsonType: 'objectId'
+        }
+      },
+      polls: {
+        bsonType: 'array',
+        description: 'must be an array of ObjectIds',
+        items: {
+          bsonType: 'objectId'
+        }
+      },
+      ticketing: {
+        bsonType: 'objectId',
+        description: 'must be an ObjectId or null'
+      }
+    }
+  }
+}

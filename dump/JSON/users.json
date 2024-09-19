@@ -1,0 +1,70 @@
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      'email',
+      'username'
+    ],
+    properties: {
+      email: {
+        bsonType: 'string',
+        description: 'Must be a valid email address and unique',
+        pattern: '^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$'
+      },
+      username: {
+        bsonType: 'string',
+        description: 'Must be unique'
+      },
+      date_of_birth: {
+        bsonType: 'date',
+        description: 'Must be a valid date'
+      },
+      profile_photo: {
+        bsonType: 'string',
+        description: 'URL or path to profile photo'
+      },
+      friends: {
+        bsonType: 'array',
+        description: 'List of ObjectIds representing friends',
+        items: {
+          bsonType: 'objectId'
+        }
+      },
+      groups: {
+        bsonType: 'array',
+        description: 'List of ObjectIds representing groups',
+        items: {
+          bsonType: 'objectId'
+        }
+      },
+      participated_events: {
+        bsonType: 'array',
+        description: 'List of ObjectIds representing events the user has participated in',
+        items: {
+          bsonType: 'objectId'
+        }
+      },
+      purchased_tickets: {
+        bsonType: 'array',
+        description: 'List of ObjectIds representing purchased tickets',
+        items: {
+          bsonType: 'objectId'
+        }
+      },
+      carpooling: {
+        bsonType: 'array',
+        description: 'List of ObjectIds representing carpooling offers',
+        items: {
+          bsonType: 'objectId'
+        }
+      },
+      shopping_list: {
+        bsonType: 'array',
+        description: 'List of ObjectIds representing shopping list items',
+        items: {
+          bsonType: 'objectId'
+        }
+      }
+    }
+  }
+}
